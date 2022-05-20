@@ -1,5 +1,6 @@
 package com.pri.airquality.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -14,49 +15,60 @@ data class CityResponseModel(
 
 @Entity
 data class Station(
+    @PrimaryKey
+    @field:SerializedName("_id")
+    @ColumnInfo(name = "id")
+    val id: String,
     @field:SerializedName("AQI")
-    val aQI: Int? = null,
+    val aQI: String? = null,
     @field:SerializedName("aqiInfo")
     @Embedded
     val aqiInfo: AqiInfo? = null,
     @field:SerializedName("CO")
-    val cO: Double? = null,
+    val cO: String? = null,
     @field:SerializedName("city")
     val city: String? = null,
     @field:SerializedName("countryCode")
-    @PrimaryKey
-    val countryCode: String,
+    val countryCode: String? = null,
     @field:SerializedName("division")
     val division: String? = null,
     @field:SerializedName("lat")
-    val lat: Double? = null,
+    val lat: String? = null,
     @field:SerializedName("lng")
-    val lng: Double? = null,
+    val lng: String? = null,
     @field:SerializedName("NO2")
-    val nO2: Double? = null,
+    val nO2: String? = null,
     @field:SerializedName("OZONE")
-    val oZONE: Double? = null,
+    val oZONE: String? = null,
     @field:SerializedName("PM10")
-    val pM10: Double? = null,
+    val pM10: String? = null,
     @field:SerializedName("PM25")
-    val pM25: Double? = null,
+    val pM25: String? = null,
     @field:SerializedName("placeName")
     val placeName: String? = null,
     @field:SerializedName("postalCode")
     val postalCode: String? = null,
     @field:SerializedName("SO2")
-    val sO2: Double? = null,
+    val sO2: String? = null,
     @field:SerializedName("state")
     val state: String? = null,
     @field:SerializedName("updatedAt")
     val updatedAt: String? = null
-)
+) {
+    override fun toString(): String {
+        return city.takeUnless { it.isNullOrBlank() } ?: kotlin.run {
+            division.takeUnless { it.isNullOrBlank() } ?: kotlin.run {
+                state.takeUnless { it.isNullOrBlank() } ?: placeName.orEmpty()
+            }
+        }
+    }
+}
 
 data class AqiInfo(
     @field:SerializedName("category")
     val category: String? = null,
     @field:SerializedName("concentration")
-    val concentration: Double? = null,
+    val concentration: String? = null,
     @field:SerializedName("pollutant")
     val pollutant: String? = null
 )

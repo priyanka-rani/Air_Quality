@@ -1,12 +1,14 @@
-package com.pri.airquality.ui.search
+package com.pri.airquality.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.pri.airquality.databinding.ItemCityBinding
 import com.pri.airquality.model.Station
+import com.pri.airquality.ui.search.SearchFragmentDirections
 
 class SearchedCityAdapter :
     ListAdapter<Station, SearchedCityAdapter.ViewHolder>(StationDiffCallback()) {
@@ -28,8 +30,20 @@ class SearchedCityAdapter :
 
     inner class ViewHolder(private val binding: ItemCityBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(station: Station) {
+        init {
+            binding.root.setOnClickListener { view ->
+                val item = getItem(adapterPosition)
+                view.findNavController().navigate(
+                    SearchFragmentDirections.actionSearchFragmentToDetailsFragment(
+                        title = item.toString(),
+                        id = item.id
+                    )
+                )
+            }
+        }
 
+        fun bind(station: Station) {
+            binding.tvCityName.text = station.toString()
         }
     }
 }

@@ -4,14 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?android:listPreferredItemHeightSmall"
+    android:background="?selectableItemBackground"
     android:padding="8dp">
 
     <TextView
         android:id="@+id/tvCityName"
-        style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-        android:layout_width="match_parent"
+        android:textStyle="italic"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceListItem"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@tools:sample/cities" />
 
