@@ -1,5 +1,6 @@
 package com.pri.airquality.ui.details
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import com.pri.airquality.repository.SearchRepository
@@ -7,30 +8,38 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailsViewModel @Inject constructor(private val repository: SearchRepository) : ViewModel() {
-    fun getStationDetails(id: String) = repository.getStationsById(id).map {
-        it.run {
-            buildList {
-                add("Time" to updatedAt)
-                add("CO" to cO)
-                add("NO2" to nO2)
-                add("OZONE" to oZONE)
-                add("PM10" to pM10)
-                add("PM25" to pM25)
-                add("SO2" to sO2)
-                add("AQI" to aQI)
-                add("Pollutant" to aqiInfo?.pollutant)
-                add("Concentration" to aqiInfo?.concentration)
-                add("Category" to aqiInfo?.category)
-                add("Place Name" to placeName)
-                add("Postal Code" to postalCode)
-                add("City" to city)
-                add("Division" to division)
-                add("State" to state)
-                add("Country Code" to countryCode)
-                add("Lat" to lat)
-                add("Long" to lng)
-            }
+class DetailsViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
+    repository: SearchRepository
+) : ViewModel() {
+    private val stationId: String = savedStateHandle.get<String>(STATON_ID_SAVED_STATE_KEY)!!
+    val stationDetails = repository.getStationsById(stationId).map { station ->
+        with(station) {
+            listOf(
+                "CO" to cO,
+                "NO2" to nO2,
+                "OZONE" to oZONE,
+                "PM10" to pM10,
+                "PM25" to pM25,
+                "SO2" to sO2,
+                "AQI" to aQI,
+                "Pollutant" to aqiInfo?.pollutant,
+                "Concentration" to aqiInfo?.concentration,
+                "Category" to aqiInfo?.category,
+                "Place Name" to placeName,
+                "Postal Code" to postalCode,
+                "City" to city,
+                "Division" to division,
+                "State" to state,
+                "Country Code" to countryCode,
+                "Lat" to lat,
+                "Long" to lng,
+                "Updated at" to updatedAt
+            )
         }
+    }
+
+    companion object {
+        private const val STATON_ID_SAVED_STATE_KEY = "id"
     }
 }

@@ -15,7 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailsFragment : Fragment() {
     private val viewModel by viewModels<DetailsViewModel>()
     private lateinit var binding: FragmentDetailsBinding
-    private val args by navArgs<DetailsFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +27,7 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getStationDetails(args.id).observe(viewLifecycleOwner) {
+        viewModel.stationDetails.observe(viewLifecycleOwner) {
             val adapter = DetailsAdapter(it.orEmpty())
             binding.rvCityDetails.adapter = adapter
         }
