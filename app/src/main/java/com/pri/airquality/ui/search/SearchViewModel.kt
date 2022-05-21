@@ -1,10 +1,9 @@
 package com.pri.airquality.ui.search
 
 import androidx.lifecycle.*
-import com.pri.airquality.model.Station
-import com.pri.airquality.repository.SearchRepository
+import com.pri.airquality.data.model.Station
+import com.pri.airquality.data.repository.SearchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
@@ -21,7 +20,6 @@ class SearchViewModel @Inject constructor(private val repository: SearchReposito
         repository.getCityWiseAirQuality(it)
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     val searchResult = _query.debounce(300).flatMapLatest {
         repository.getStationsByCity(query = it)
     }.asLiveData()

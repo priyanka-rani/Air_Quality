@@ -3,7 +3,7 @@ package com.pri.airquality.ui.details
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
-import com.pri.airquality.repository.SearchRepository
+import com.pri.airquality.data.repository.SearchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

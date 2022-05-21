@@ -1,10 +1,10 @@
-package com.pri.airquality.repository
+package com.pri.airquality.data.repository
 
 import androidx.lifecycle.liveData
 import com.pri.airquality.api.ApiService
-import com.pri.airquality.db.StationDao
-import com.pri.airquality.model.Resource
-import com.pri.airquality.model.Station
+import com.pri.airquality.data.db.StationDao
+import com.pri.airquality.data.model.Resource
+import com.pri.airquality.data.model.Station
 import javax.inject.Inject
 
 class SearchRepository @Inject constructor(

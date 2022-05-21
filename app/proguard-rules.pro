@@ -27,8 +27,7 @@
 -keep public class * extends java.lang.Exception
 
 #preserving model class
--keep class com.pri.airquality.model.** { *; }
--keep class com.pri.airquality.model.** { *; }
+-keep class com.pri.airquality.data.model.** { *; }
 
 ##Coroutines
 -keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}

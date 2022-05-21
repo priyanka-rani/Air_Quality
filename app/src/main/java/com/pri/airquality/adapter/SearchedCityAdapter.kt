@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.pri.airquality.databinding.ItemCityBinding
-import com.pri.airquality.model.Station
+import com.pri.airquality.data.model.Station
 import com.pri.airquality.ui.search.SearchFragmentDirections
 
 class SearchedCityAdapter :

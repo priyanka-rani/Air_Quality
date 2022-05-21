@@ -1,4 +1,4 @@
-package com.pri.airquality.model
+package com.pri.airquality.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded

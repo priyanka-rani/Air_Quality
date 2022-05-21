@@ -1,10 +1,10 @@
-package com.pri.airquality.db
+package com.pri.airquality.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.pri.airquality.model.Station
+import com.pri.airquality.data.model.Station
 
 /**
  * The Room database for this app

@@ -1,8 +1,8 @@
 package com.pri.airquality.di
 
 import android.content.Context
-import com.pri.airquality.db.AppDatabase
-import com.pri.airquality.db.StationDao
+import com.pri.airquality.data.db.AppDatabase
+import com.pri.airquality.data.db.StationDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,7 +1,7 @@
 package com.pri.airquality.api
 
 import com.pri.airquality.BuildConfig
-import com.pri.airquality.model.CityResponseModel
+import com.pri.airquality.data.model.CityResponseModel
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query

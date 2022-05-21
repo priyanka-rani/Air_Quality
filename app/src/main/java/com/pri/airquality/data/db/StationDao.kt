@@ -1,11 +1,11 @@
-package com.pri.airquality.db
+package com.pri.airquality.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.pri.airquality.model.Station
+import com.pri.airquality.data.model.Station
 import kotlinx.coroutines.flow.Flow
 
 /**
