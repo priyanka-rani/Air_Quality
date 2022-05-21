@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import com.pri.airquality.adapter.DetailsAdapter
 import com.pri.airquality.databinding.FragmentDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint

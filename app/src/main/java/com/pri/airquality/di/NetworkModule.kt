@@ -20,7 +20,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideAuthOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .followRedirects(true)
             .followSslRedirects(true)
@@ -39,7 +39,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitBuilder(
+    fun provideRetrofit(
         okHttpClient: OkHttpClient
     ): Retrofit =
         Retrofit.Builder()
